@@ -25,10 +25,10 @@ bot.on('left_chat_member',ctx=>{
     ctx.deleteMessage()
     bot.telegram.sendMessage(ctx.chat.id,`Voy ${ctx.update.message.left_chat_member.first_name} bizni tark etdi.😱🤔`)
 })
-bot.on('text',ctx=>{
-     bot.telegram.sendMessage(ctx.chat.id,`Voy .😱🤔`)
-    //console.log(`Voy .😱🤔`)
-})
+// bot.on('text',ctx=>{
+//      bot.telegram.sendMessage(ctx.chat.id,`Voy .😱🤔`)
+//     //console.log(`Voy .😱🤔`)
+// })
 app.listen(PORT , () => {
     console.log(`Server running on port ${PORT}`)
 })
