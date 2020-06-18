@@ -17,14 +17,14 @@ app.use(bot.webhookCallback(`/bot${TOKEN}`));
 
 bot.on('new_chat_members',ctx=>{
     ctx.deleteMessage()
-    bot.telegram.sendMessage(ctx.chat.id,`Assalomu alaykum ${ctx.update.message.new_chat_member.first_name}`
-    + greeting
+    bot.telegram.sendMessage(ctx.chat.id,
+        `Assalomu alaykum ` + `<a href="tg://user?id=${ctx.update.message.new_chat_member.id}">${ctx.update.message.new_chat_member.first_name}</a>`
+    + greeting+ `Guruh `+
+    ` <a href="https://t.me/telegraf_uzb/31">haqida </a>` +` tanishib chiqishingizni so'rab qolamiz`,
+    {parse_mode:'HTML'}
     )
 })
-bot.on('left_chat_member',ctx=>{
-    ctx.deleteMessage()
-    bot.telegram.sendMessage(ctx.chat.id,`Voy ${ctx.update.message.left_chat_member.first_name} bizni tark etdi.😱🤔`)
-})
+
 // bot.on('text',ctx=>{
 //      bot.telegram.sendMessage(ctx.chat.id,`Voy .😱🤔`)
 //     //console.log(`Voy .😱🤔`)
