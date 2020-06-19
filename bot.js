@@ -20,15 +20,11 @@ bot.on('new_chat_members',ctx=>{
     bot.telegram.sendMessage(ctx.chat.id,
         `Assalomu alaykum ` + `<a href="tg://user?id=${ctx.update.message.new_chat_member.id}">${ctx.update.message.new_chat_member.first_name}</a>`
     + greeting+ `Guruh `+
-    ` <a href="https://t.me/telegraf_uzb/31">haqida </a>` +` tanishib chiqishingizni so'rab qolamiz`,
+    ` <a href="https://t.me/telegraf_uzb/31">haqida </a>` +` tanishib chiqishingizni maslahat beramiz`,
     {parse_mode:'HTML'}
     )
 })
 
-// bot.on('text',ctx=>{
-//      bot.telegram.sendMessage(ctx.chat.id,`Voy .😱🤔`)
-//     //console.log(`Voy .😱🤔`)
-// })
 app.listen(PORT , () => {
     console.log(`Server running on port ${PORT}`)
 })
