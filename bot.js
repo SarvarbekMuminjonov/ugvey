@@ -8,7 +8,7 @@ const TOKEN=process.env.TOKEN
 const bot=new Telegraf(TOKEN)
 
 const greeting=`
-Telegraf JS- Uzbekistan guruhimizga xush kelibsiz.
+Telegraf JS - Uzbekistan guruhiga xush kelibsiz.
 `
 
 
@@ -21,7 +21,7 @@ bot.on('new_chat_members',ctx=>{
         `Assalomu alaykum ` + `<a href="tg://user?id=${ctx.update.message.new_chat_member.id}">${ctx.update.message.new_chat_member.first_name}</a>`
     + greeting+ `Guruh `+
     ` <a href="https://t.me/telegraf_uzb/31">haqida </a>` +` tanishib chiqishingizni maslahat beramiz`,
-    {parse_mode:'HTML'}
+    {parse_mode:'HTML'},{disable_web_page_preview:true}
     )
 })
 bot.on('text', ctx => {
