@@ -27,14 +27,14 @@ bot.on('new_chat_members',(ctx,next)=>{
     next()
 })
 bot.on('text', (ctx,next) => {
-    console.log(ctx.message.text)
     if (ctx.message.text.slice(0, 3) == '#js') {
       let url = "https://rextester.com/rundotnet/api"
       let form = { "LanguageChoice": 23, "Program": ctx.message.text.slice(4) }
       request.post({ url, form }, (err, res, body) => {
         let data = JSON.parse(body)
         if (data.Errors) {
-          ctx.replyWithHTML(`<code>${data.Errors}</code>`,{reply_to_message_id:ctx.message.message_id})
+         bot.telegram.sendMessage(ctx.chat.id,`<code>${data.Errors}</code>`,
+         {reply_to_message_id:ctx.message.message_id,parse_mode:'HTML'})
         } else {
           bot.telegram.sendMessage(ctx.chat.id,data.Result,{reply_to_message_id:ctx.message.message_id})
         }
