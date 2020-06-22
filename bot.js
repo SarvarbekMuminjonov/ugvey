@@ -36,7 +36,7 @@ bot.on('text', (ctx,next) => {
         if (data.Errors) {
           ctx.replyWithHTML(`<code>${data.Errors}</code>`,{reply_to_message_id:ctx.message.message_id})
         } else {
-          ctx.reply(data.Result,{reply_to_message_id:ctx.message.message_id})
+          bot.telegram.sendMessage(ctx.chat.id,data.Result,{reply_to_message_id:ctx.message.message_id})
         }
       })
     }
