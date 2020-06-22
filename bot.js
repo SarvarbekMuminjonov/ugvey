@@ -24,6 +24,20 @@ bot.on('new_chat_members',ctx=>{
     {parse_mode:'HTML'}
     )
 })
+bot.on('text', ctx => {
+    if (ctx.message.text.slice(0, 3) == '#js') {
+      let url = "https://rextester.com/rundotnet/api"
+      let form = { "LanguageChoice": 23, "Program": ctx.message.text.slice(4) }
+      request.post({ url, form }, (err, res, body) => {
+        let data = JSON.parse(body)
+        if (data.Errors) {
+          ctx.replyWithHTML(`<code>${data.Errors}</code>`,{reply_to_message_id:ctx.message.message_id})
+        } else {
+          ctx.reply(data.Result,{reply_to_message_id:ctx.message.message_id})
+        }
+      })
+    }
+  })
 
 app.listen(PORT , () => {
     console.log(`Server running on port ${PORT}`)
