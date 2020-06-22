@@ -16,7 +16,7 @@ Telegraf JS - Uzbekistan guruhiga xush kelibsiz.
 bot.telegram.setWebhook(`${URL}/bot${TOKEN}`);
 app.use(bot.webhookCallback(`/bot${TOKEN}`));
 
-bot.on('new_chat_members',ctx=>{
+bot.on('new_chat_members',(ctx,next)=>{
     ctx.deleteMessage()
     bot.telegram.sendMessage(ctx.chat.id,
         `Assalomu alaykum ` + `<a href="tg://user?id=${ctx.update.message.new_chat_member.id}">${ctx.update.message.new_chat_member.first_name}</a>`
@@ -24,8 +24,10 @@ bot.on('new_chat_members',ctx=>{
     ` <a href="https://t.me/telegraf_uzb/31">haqida </a>` +` tanishib chiqishingizni maslahat beramiz`,
     {parse_mode:'HTML',disable_web_page_preview:true}
     )
+    next()
 })
-bot.on('text', ctx => {
+bot.on('text', (ctx,next) => {
+    console.log(ctx.message.text)
     if (ctx.message.text.slice(0, 3) == '#js') {
       let url = "https://rextester.com/rundotnet/api"
       let form = { "LanguageChoice": 23, "Program": ctx.message.text.slice(4) }
@@ -38,6 +40,7 @@ bot.on('text', ctx => {
         }
       })
     }
+    next()
   })
 
 app.listen(PORT , () => {
