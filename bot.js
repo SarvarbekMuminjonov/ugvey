@@ -26,6 +26,11 @@ bot.on('new_chat_members',(ctx)=>{
     )
  
 })
+
+bot.on('left_chat_member',(ctx)=>{
+  ctx.deleteMessage()
+})
+
 bot.on('text', (ctx) => {
     if (ctx.message.text.slice(0, 3) == '#js') {
       let url = "https://rextester.com/rundotnet/api"
