@@ -17,7 +17,7 @@ bot.telegram.setWebhook(`${URL}/bot${TOKEN}`);
 app.use(bot.webhookCallback(`/bot${TOKEN}`));
 
 bot.on('new_chat_members',(ctx)=>{
-    ctx.deleteMessage()
+    bot.telegram.deleteMessage(ctx.chat.id)
     bot.telegram.sendMessage(ctx.chat.id,
         `Assalomu alaykum ` + `<a href="tg://user?id=${ctx.update.message.new_chat_member.id}">${ctx.update.message.new_chat_member.first_name}</a>`
     + greeting+ `Guruh `+
