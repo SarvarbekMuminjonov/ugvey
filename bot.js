@@ -31,22 +31,31 @@ bot.on('left_chat_member',(ctx)=>{
   ctx.deleteMessage()
 })
 
-bot.on('text', (ctx) => {
+
+  bot.on('text', ctx => {
     if (ctx.message.text.slice(0, 3) == '#js') {
       let url = "https://rextester.com/rundotnet/api"
       let form = { "LanguageChoice": 23, "Program": ctx.message.text.slice(4) }
       request.post({ url, form }, (err, res, body) => {
         let data = JSON.parse(body)
         if (data.Errors) {
-         bot.telegram.sendMessage(ctx.chat.id,`<code>${data.Errors}</code>`,
-         {reply_to_message_id:ctx.message.message_id,parse_mode:'HTML'})
+          bot.telegram.sendMessage(ctx.chat.id,`<code>${escapeOutOfRange(data.Errors)}</code>`,
+          {reply_to_message_id:ctx.message.message_id,parse_mode:'HTML'})
+         // ctx.replyWithHTML(`<code>${escapeOutOfRange(data.Errors)}</code>`, { reply_to_message_id: ctx.message.message_id })
         } else {
           bot.telegram.sendMessage(ctx.chat.id,data.Result,{reply_to_message_id:ctx.message.message_id})
+          //ctx.reply(escapeOutOfRange(data.Result), { reply_to_message_id: ctx.message.message_id })
         }
       })
     }
-    
   })
+  
+  function escapeOutOfRange(text) {
+    if (text.length > 4000) {
+      return text.slice(4000) + "\n...\nMessage out of range 4000 symbols"
+    }
+    return text
+  }
 
 app.listen(PORT , () => {
     console.log(`Server running on port ${PORT}`)
