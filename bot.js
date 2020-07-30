@@ -21,7 +21,7 @@ bot.on('new_chat_members',(ctx)=>{
     bot.telegram.sendMessage(ctx.chat.id,
         `Assalomu alaykum ` + `<a href="tg://user?id=${ctx.update.message.new_chat_member.id}">${ctx.update.message.new_chat_member.first_name}</a>`
     + greeting+ `Guruh `+
-    ` <a href="https://t.me/telegraf_uzb/31">haqida </a>` +` tanishib chiqishingizni maslahat beramiz`,
+    ` <a href="https://t.me/telegrafJS_uz/31">haqida </a>` +` tanishib chiqishingizni maslahat beramiz`,
     {parse_mode:'HTML',disable_web_page_preview:true}
     )
  
@@ -43,8 +43,8 @@ bot.on('left_chat_member',(ctx)=>{
           {reply_to_message_id:ctx.message.message_id,parse_mode:'HTML'})
          // ctx.replyWithHTML(`<code>${escapeOutOfRange(data.Errors)}</code>`, { reply_to_message_id: ctx.message.message_id })
         } else {
-          bot.telegram.sendMessage(ctx.chat.id,data.Result,{reply_to_message_id:ctx.message.message_id})
-          //ctx.reply(escapeOutOfRange(data.Result), { reply_to_message_id: ctx.message.message_id })
+          //bot.telegram.sendMessage(ctx.chat.id,data.Result,{reply_to_message_id:ctx.message.message_id})
+          ctx.reply(escapeOutOfRange(data.Result), { reply_to_message_id: ctx.message.message_id })
         }
       })
     }
