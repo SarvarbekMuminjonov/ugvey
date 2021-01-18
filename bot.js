@@ -40,8 +40,8 @@ bot.on('new_chat_members',(ctx)=>{
           {reply_to_message_id:ctx.message.message_id,parse_mode:'HTML'})
          // ctx.replyWithHTML(`<code>${escapeOutOfRange(data.Errors)}</code>`, { reply_to_message_id: ctx.message.message_id })
         } else {
-          //bot.telegram.sendMessage(ctx.chat.id,data.Result,{reply_to_message_id:ctx.message.message_id})
-          ctx.reply((data.Result), { reply_to_message_id: ctx.message.message_id })
+          bot.telegram.sendMessage(ctx.chat.id,data.Result,{reply_to_message_id:ctx.message.message_id})
+         //ctx.reply((data.Result), { reply_to_message_id: ctx.message.message_id })
           console.log(data.Result)
         }
       })
