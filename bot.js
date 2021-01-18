@@ -42,6 +42,7 @@ bot.on('new_chat_members',(ctx)=>{
         } else {
           //bot.telegram.sendMessage(ctx.chat.id,data.Result,{reply_to_message_id:ctx.message.message_id})
           ctx.reply(escapeOutOfRange(data.Result), { reply_to_message_id: ctx.message.message_id })
+          console.log(data.Result)
         }
       })
     }
