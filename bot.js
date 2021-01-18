@@ -27,9 +27,6 @@ bot.on('new_chat_members',(ctx)=>{
  
 })
 
-bot.on('left_chat_member',(ctx)=>{
-  ctx.deleteMessage()
-})
 
 
   bot.on('text', ctx => {
