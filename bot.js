@@ -36,8 +36,7 @@ bot.on('new_chat_members',(ctx)=>{
       request.post({ url, form }, (err, res, body) => {
         let data = JSON.parse(body)
         if (data.Errors) {
-          bot.telegram.sendMessage(ctx.chat.id,`<code>${escapeOutOfRange(data.Errors)}</code>`,
-          {reply_to_message_id:ctx.message.message_id,parse_mode:'HTML'})
+          bot.telegram.sendMessage(ctx.chat.id,`<code>${escapeOutOfRange(data.Errors)}</code>`,{reply_to_message_id:ctx.message.message_id,parse_mode:'HTML'})
           console.log(
             data.Errors
           )
