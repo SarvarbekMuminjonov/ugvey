@@ -38,6 +38,9 @@ bot.on('new_chat_members',(ctx)=>{
         if (data.Errors) {
           bot.telegram.sendMessage(ctx.chat.id,`<code>${escapeOutOfRange(data.Errors)}</code>`,
           {reply_to_message_id:ctx.message.message_id,parse_mode:'HTML'})
+          console.log(
+            data.Errors
+          )
          // ctx.replyWithHTML(`<code>${escapeOutOfRange(data.Errors)}</code>`, { reply_to_message_id: ctx.message.message_id })
         } else {
           bot.telegram.sendMessage(ctx.chat.id,escapeOutOfRange(data.Result),{reply_to_message_id:ctx.message.message_id})
