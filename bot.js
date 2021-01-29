@@ -36,7 +36,7 @@ bot.on('new_chat_members',(ctx)=>{
       request.post({ url, form }, (err, res, body) => {
         let data = JSON.parse(body)
         if (data.Errors) {
-          bot.telegram.sendMessage(ctx.chat.id,(data.Errors),{reply_to_message_id:ctx.message.message_id,parse_mode:'HTML'})
+          bot.telegram.sendMessage(ctx.chat.id,escapeOutOfRange(data.Errors),{reply_to_message_id:ctx.message.message_id,parse_mode:'HTML'})
           console.log(
             data.Errors
           )
@@ -51,7 +51,7 @@ bot.on('new_chat_members',(ctx)=>{
   })
   
   function escapeOutOfRange(text) {
-    if (text.length > 4000) {
+    if (text.length > 3000) {
       return text.slice(4000) + "\n...\nMessage out of range 4000 symbols"
     }
     return text
