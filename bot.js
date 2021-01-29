@@ -51,7 +51,7 @@ bot.on('new_chat_members',(ctx)=>{
   })
   
   function escapeOutOfRange(text) {
-    if (text.length > 3000) {
+    if (text.length > 4000) {
       return text.slice(4000) + "\n...\nMessage out of range 4000 symbols"
     }
     return text
