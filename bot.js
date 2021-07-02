@@ -28,7 +28,7 @@ bot.on('new_chat_members', (ctx) => {
             ctx.deleteMessage(m.message_id).catch(err => {
                 console.log(err)
             })
-        }, 15 * 1000)
+        }, 60 * 1000)
     })
 
 })
