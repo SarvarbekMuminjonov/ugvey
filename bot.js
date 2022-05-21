@@ -32,7 +32,6 @@ bot.on('new_chat_members', (ctx) => {
 
 })
 
-
 app.listen(PORT , () => {
     console.log(`Server running on port ${PORT}`)
 })
