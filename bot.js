@@ -12,7 +12,6 @@ const greeting=`
 Telegraf JS - Uzbekistan guruhiga xush kelibsiz.
 `
 
-
 bot.telegram.setWebhook(`${URL}/bot${TOKEN}`);
 app.use(bot.webhookCallback(`/bot${TOKEN}`));
 
@@ -28,34 +27,6 @@ bot.on('new_chat_members',(ctx)=>{
 })
 
 
-
-  bot.on('text', ctx => {
-    if (ctx.message.text.slice(0, 3) == '#js') {
-      let url = "https://rextester.com/rundotnet/api"
-      let form = { "LanguageChoice": 23, "Program": ctx.message.text.slice(4) }
-      request.post({ url, form }, (err, res, body) => {
-        let data = JSON.parse(body)
-        if (data.Errors) {
-          bot.telegram.sendMessage(ctx.chat.id,escapeOutOfRange(data.Errors),{reply_to_message_id:ctx.message.message_id})
-          console.log(
-            data.Errors
-          )
-         // ctx.replyWithHTML(`<code>${escapeOutOfRange(data.Errors)}</code>`, { reply_to_message_id: ctx.message.message_id })
-        } else {
-          bot.telegram.sendMessage(ctx.chat.id,escapeOutOfRange(data.Result),{reply_to_message_id:ctx.message.message_id})
-         //ctx.reply((data.Result), { reply_to_message_id: ctx.message.message_id })
-          //console.log(data.Result)
-        }
-      })
-    }
-  })
-  
-  function escapeOutOfRange(text) {
-    if (text.length > 4000) {
-      return text.slice(4000) + "\n...\nMessage out of range 4000 symbols"
-    }
-    return text
-  }
 
 app.listen(PORT , () => {
     console.log(`Server running on port ${PORT}`)
