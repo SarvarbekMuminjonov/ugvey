@@ -14,7 +14,9 @@ Telegraf JS - Uzbekistan guruhiga xush kelibsiz.
 
 bot.telegram.setWebhook(`${URL}/bot${TOKEN}`);
 // app.use(bot.webhookCallback(`/bot${TOKEN}`));
-
+bot.start((ctx) => {
+	return ctx.reply("Ichki hotirjamlik");
+});
 bot.on("new_chat_members", (ctx) => {
 	ctx.deleteMessage();
 	bot.telegram
@@ -42,7 +44,7 @@ bot.on("message", async (ctx) => {
 	if (ctx.chat.type === "group" || ctx.chat.type === "supergroup") {
 		if (ctx.from.username === "Channel_Bot") {
 			await ctx.deleteMessage();
-			await ctx.banChatSenderChat(ctx.message.sender_chat.id);
+			// await ctx.banChatSenderChat(ctx.message.sender_chat.id);
 			let warning = `<b>❗️ Iltimos, guruhda kanal nomidan yozmang!</b>`;
 			ctx.replyWithHTML(warning).then((m) => {
 				setTimeout(() => {
