@@ -11,7 +11,7 @@ async function loadBot() {
 	try {
 		const greeting = `\nTelegraf JS - Uzbekistan guruhiga xush kelibsiz.\n`;
 		const secret_url = `${URL}/bot${TOKEN}`;
-		bot.telegram.setWebhook(secret_url);
+		// bot.telegram.setWebhook(secret_url);
 		bot.catch((err) => {
 			console.error(err);
 			return;
