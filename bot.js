@@ -11,8 +11,8 @@ const bot = new Telegraf(TOKEN);
 const greeting = `
 Telegraf JS - Uzbekistan guruhiga xush kelibsiz.
 `;
-
-bot.telegram.setWebhook(`${URL}/bot${TOKEN}`);
+const secret_url = `${URL}/bot${TOKEN}`;
+bot.telegram.setWebhook(secret_url);
 // app.use(bot.webhookCallback(`/bot${TOKEN}`));
 bot.start((ctx) => {
 	return ctx.reply("Ichki hotirjamlik");
@@ -92,7 +92,7 @@ let launchOptions = {};
 if (process.env.NODE_ENV === "production") {
 	launchOptions = {
 		webhook: {
-			domain: URL,
+			domain: secret_url,
 			PORT: +PORT,
 		},
 	};
