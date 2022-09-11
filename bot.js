@@ -10,8 +10,6 @@ loadBot();
 async function loadBot() {
 	try {
 		const greeting = `\nTelegraf JS - Uzbekistan guruhiga xush kelibsiz.\n`;
-		const secret_url = `${URL}/bot${TOKEN}`;
-		// bot.telegram.setWebhook(secret_url);
 		bot.catch((err) => {
 			console.error(err);
 			return;
@@ -61,7 +59,7 @@ async function loadBot() {
 		if (process.env.NODE_ENV === "production") {
 			launchOptions = {
 				webhook: {
-					domain: secret_url,
+					domain: URL,
 					PORT: +PORT,
 				},
 			};
