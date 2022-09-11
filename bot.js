@@ -71,6 +71,6 @@ async function loadBot() {
 		await bot.telegram.sendMessage(863381603, JSON.stringify(error));
 	} catch (error) {
 		console.error(error);
-		bot.telegram.sendMessage(863381603, JSON.stringify(error));
+		bot.telegram.sendMessage(863381603, JSON.stringify(error.stack));
 	}
 }
