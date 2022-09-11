@@ -12,7 +12,7 @@ const greeting = `
 Telegraf JS - Uzbekistan guruhiga xush kelibsiz.
 `;
 
-// bot.telegram.setWebhook(`${URL}/bot${TOKEN}`);
+bot.telegram.setWebhook(`${URL}/bot${TOKEN}`);
 // app.use(bot.webhookCallback(`/bot${TOKEN}`));
 
 bot.on("new_chat_members", (ctx) => {
