@@ -53,7 +53,7 @@ async function loadBot() {
 			}
 		});
 
-		const launchOptions = {};
+		let launchOptions = {};
 
 		if (process.env.NODE_ENV === "production") {
 			launchOptions = {
