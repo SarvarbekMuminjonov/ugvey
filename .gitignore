@@ -1,3 +1,6 @@
 node_modules
 .vscode
-.env
+env
+*.env
+package-lock.json
+yarn.lock
