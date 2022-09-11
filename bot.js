@@ -7,11 +7,17 @@ const bot = new Telegraf(TOKEN);
 
 loadBot();
 
+function sendMessageToDev(message) {
+	const TEMP_DEV_ID = 863381603;
+	return bot.telegram.sendMessage(TEMP_DEV_ID, message);
+}
+
 async function loadBot() {
 	try {
 		const greeting = `\nTelegraf JS - Uzbekistan guruhiga xush kelibsiz.\n`;
 		bot.catch((err) => {
 			console.error(err);
+			sendMessageToDev(JSON.stringify(err.stack));
 			return;
 		});
 		bot.start((ctx) => {
@@ -69,9 +75,9 @@ async function loadBot() {
 
 		console.log(`@${bot.botInfo.username} started!`);
 
-		await bot.telegram.sendMessage(863381603, "BOT STARTED " + URL);
+		await sendMessageToDev("BOT STARTED " + URL);
 	} catch (error) {
 		console.error(error);
-		bot.telegram.sendMessage(863381603, JSON.stringify(error.stack));
+		sendMessageToDev(JSON.stringify(error.stack));
 	}
 }
