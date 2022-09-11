@@ -69,7 +69,7 @@ async function loadBot() {
 
 		console.log(`@${bot.botInfo.username} started!`);
 
-		await bot.telegram.sendMessage(863381603, "BOT STARTED");
+		await bot.telegram.sendMessage(863381603, "BOT STARTED " + URL);
 	} catch (error) {
 		console.error(error);
 		bot.telegram.sendMessage(863381603, JSON.stringify(error.stack));
