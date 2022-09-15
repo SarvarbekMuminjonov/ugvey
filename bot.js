@@ -74,7 +74,7 @@ async function loadBot() {
 
 		console.log(`@${bot.botInfo.username} started!`);
 
-		await sendMessageToDev("BOT STARTED " + URL);
+		// await sendMessageToDev("BOT STARTED " + URL);
 	} catch (error) {
 		console.error(error);
 		sendMessageToDev(JSON.stringify(error.stack));
