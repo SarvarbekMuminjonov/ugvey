@@ -22,8 +22,10 @@ async function loadBot() {
 			sendMessageToDev(JSON.stringify(err.stack));
 			return;
 		});
-		bot.start((ctx) => {
-			return ctx.reply("Ichki hotirjamlik");
+		bot.command("start", (ctx) => {
+			if (ctx.chat.type === "private") {
+				return ctx.reply("Ichki hotirjamlik");
+			}
 		});
 		bot.on("new_chat_members", (ctx) => {
 			ctx.deleteMessage();
