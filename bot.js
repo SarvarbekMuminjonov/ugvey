@@ -4,6 +4,8 @@ const URL = process.env.URL;
 const PORT = process.env.PORT;
 const TOKEN = process.env.TOKEN;
 const bot = new Telegraf(TOKEN);
+const express = require("express");
+const app = express();
 
 loadBot();
 
@@ -60,18 +62,15 @@ async function loadBot() {
 			}
 		});
 
-		let launchOptions = {};
-
 		if (process.env.NODE_ENV === "production") {
-			launchOptions = {
-				webhook: {
-					domain: URL,
-					PORT: +PORT,
-				},
-			};
+			bot.telegram.setWebhook(`${URL}/bot${TOKEN}`);
+			app.use(bot.webhookCallback(`/bot${TOKEN}`));
+			app.listen(PORT, () => {
+				console.log(`Server running on port ${PORT}`);
+			});
 		}
 
-		await bot.launch(launchOptions);
+		await bot.launch();
 
 		console.log(`@${bot.botInfo.username} started!`);
 
