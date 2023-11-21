@@ -27,8 +27,8 @@ async function loadBot() {
 				return ctx.reply("Ichki hotirjamlik");
 			}
 		});
-		bot.on("new_chat_members", (ctx) => {
-			ctx.deleteMessage();
+		bot.on("new_chat_members", async (ctx) => {
+			await ctx.deleteMessage();
 			bot.telegram
 				.sendMessage(
 					ctx.chat.id,
